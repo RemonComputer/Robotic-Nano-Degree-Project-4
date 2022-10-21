@@ -43,4 +43,4 @@ roslaunch ball_chaser ball_chaser.launch
 
 ## Screenshots
 
-![Robot chassing the ball](imgs/robot_chassing_ball.jpg)
+![Robot chassing the ball](img/robot_chassing_ball.jpg)
