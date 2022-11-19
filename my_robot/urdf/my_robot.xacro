@@ -27,46 +27,20 @@
     <collision name='collision'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/> 
       <geometry>
-        <box size=".8 .2 .1"/>
+        <box size=".8 .5 .1"/>
       </geometry>
     </collision>
 
     <visual name='chassis_visual'>
       <origin xyz="0 0 0" rpy=" 0 0 0"/>
       <geometry>
-        <box size=".8 .2 .1"/>
+        <box size=".8 .5 .1"/>
       </geometry>
       <material name="chassis_material">
         <color rgba="0.75 0.75 0.75294 1"/>
       </material>
     </visual>
 
-  </link>
-
-  <link name="left_wheel">
-  <pose>0 0 0 0 0 0</pose>
-  <!-- -0.15 -0.2 0.1 -->
-  <visual>
-    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-   <geometry>
-    <cylinder radius="0.1" length="0.05"/>
-   </geometry>
-  </visual>
-  <collision>
-    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-   <geometry>
-    <cylinder radius="0.1" length="0.05"/>
-   </geometry>
-  </collision>
-  <inertial>
-      <mass value="5.0"/>
-      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
-      <inertia
-          ixx="0.1" ixy="0" ixz="0"
-          iyy="0.1" iyz="0"
-          izz="0.1"
-      />
-    </inertial>
   </link>
 
    <link name="left_front_wheel">
@@ -96,33 +70,6 @@
   </link>
 
    <link name="left_back_wheel">
-  <pose>0 0 0 0 0 0</pose>
-  <!-- -0.15 -0.2 0.1 -->
-  <visual>
-    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-   <geometry>
-    <cylinder radius="0.1" length="0.05"/>
-   </geometry>
-  </visual>
-  <collision>
-    <origin xyz="0 0 0" rpy="0 1.5707 1.5707"/>
-   <geometry>
-    <cylinder radius="0.1" length="0.05"/>
-   </geometry>
-  </collision>
-  <inertial>
-      <mass value="5.0"/>
-      <origin xyz="0.0 0 0" rpy=" 0 0 0"/>
-      <inertia
-          ixx="0.1" ixy="0" ixz="0"
-          iyy="0.1" iyz="0"
-          izz="0.1"
-      />
-    </inertial>
-  </link>
-
-
-<link name="right_wheel">
   <pose>0 0 0 0 0 0</pose>
   <!-- -0.15 -0.2 0.1 -->
   <visual>
@@ -201,17 +148,8 @@
   </link>
 
 
-  <joint type="continuous" name="left_wheel_hinge">
-    <origin xyz="0 0.15 0" rpy="0 0 0"/>
-    <child link="left_wheel"/>
-    <parent link="chassis"/>
-    <axis xyz="0 1 0" rpy="0 0 0"/>
-    <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
-  </joint>
-
   <joint type="continuous" name="left_front_wheel_hinge">
-    <origin xyz="0.3 0.15 0" rpy="0 0 0"/>
+    <origin xyz="0.3 0.3 0" rpy="0 0 0"/>
     <child link="left_front_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -220,7 +158,7 @@
   </joint>
 
   <joint type="continuous" name="left_back_wheel_hinge">
-    <origin xyz="-0.3 0.15 0" rpy="0 0 0"/>
+    <origin xyz="-0.3 0.3 0" rpy="0 0 0"/>
     <child link="left_back_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -230,7 +168,7 @@
 
 
   <joint type="continuous" name="right_front_wheel_hinge">
-    <origin xyz="0.3 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="0.3 -0.3 0" rpy="0 0 0"/>
     <child link="right_front_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
@@ -239,18 +177,8 @@
   </joint>
 
    <joint type="continuous" name="right_back_wheel_hinge">
-    <origin xyz="-0.3 -0.15 0" rpy="0 0 0"/>
+    <origin xyz="-0.3 -0.3 0" rpy="0 0 0"/>
     <child link="right_back_wheel"/>
-    <parent link="chassis"/>
-    <axis xyz="0 1 0" rpy="0 0 0"/>
-    <limit effort="10000" velocity="1000"/>
-    <dynamics damping="1.0" friction="1.0"/>
-  </joint>
-
-
-   <joint type="continuous" name="right_wheel_hinge">
-    <origin xyz="0 -0.15 0" rpy="0 0 0"/>
-    <child link="right_wheel"/>
     <parent link="chassis"/>
     <axis xyz="0 1 0" rpy="0 0 0"/>
     <limit effort="10000" velocity="1000"/>
@@ -308,19 +236,11 @@
   <axis xyz="0 1 0"/>
 </joint>
 
-<gazebo reference="left_wheel">
-    <material>Gazebo/Brown</material>
-</gazebo>
-
 <gazebo reference="left_front_wheel">
     <material>Gazebo/Brown</material>
 </gazebo>
 
 <gazebo reference="left_back_wheel">
-    <material>Gazebo/Brown</material>
-</gazebo>
-
-<gazebo reference="right_wheel">
     <material>Gazebo/Brown</material>
 </gazebo>
 
