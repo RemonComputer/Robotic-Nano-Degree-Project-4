@@ -1,9 +1,9 @@
-# Robotic-Nano-Degree-Project-3
+# Robotic-Nano-Degree-Project-4
 
 ## Description
 
-- This is the third project of the Robotics udacity nano-degrees. 
-- The robot would be able to localize its position on the mapusing its surroundings.
+- This is the fourth project of the Robotics udacity nano-degrees. 
+- The robot is able to navigate the environment and draw 3d point clound and 2d occupency grid maps using rtabmap ros package.
 
 ## Prerequistes
 
@@ -16,7 +16,7 @@
 mkdir -p ~/catkin_ws/src
 cd  ~/catkin_ws/src
 # Clonning the Repo
-git clone git@github.com:RemonComputer/Robotic-Nano-Degree-Project-3.git 
+git clone git@github.com:RemonComputer/Robotic-Nano-Degree-Project-4.git 
 cd ..
 # Compiling the packages
 catkin_make
@@ -31,24 +31,32 @@ source ~/catkin_ws/devel/setup.bash
 roslaunch my_robot world.launch
 ```
 
-- Open another terminal to run the Adaptive monte carlo localization algorithm.
+- Open another terminal to run the mapping node
 ```shell
 cd ~/catkin_ws
 source ~/catkin_ws/devel/setup.bash
-roslaunch my_robot amcl.launch
+roslaunch my_robot mapping.launch
 ```
 
 - Open another terminal and run the keyboard_teleop_package
 ```shell
 cd ~/catkin_ws
 source ~/catkin_ws/devel/setup.bash
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+roslaunch my_robot teleop.launch
 ```
 
 ## What to expect
 
-- Walk a few steps forward and you will notice that the robot is able to localize itself perfectly  as shown in the screenshot
+- Slowly take a tour in the environment and make closed cycles, you will notice that the grid map is being drawn along with some loop closure constrains is been detected.
+- After taking a tour you will notice that your map is saved to `~/.ros/rtabmap.db`
+- You can examine this map database using `rtabmap-databaseViewer ~/.ros/rtabmap.db`
+- Here is the [rtabmap.db](https://drive.google.com/file/d/1zd5HTKqgdSvC0AL5GF3FqX6vkxNklt7w/view?usp=sharing) database so you can examine it.
 
 ## Screenshots
 
-![Robo Localized in simulation](img/robot_localized_in_simulation.png)
+|![Updated Robot and environment](img/new-environment.jpg)|
+|:--:|
+|<b>figure 1: Updated robot and environment</b>|
+|:--:|
+|![Rtabmap Database viewer](img/RTAB-database-viewer.png)|
+|<b>figure 2: RTabmap Database viewer showing samples from the resulted database.</b>|
